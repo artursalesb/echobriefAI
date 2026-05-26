@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/echobrief
+    username: admin
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  jwt:
+    secret: 7a8f3c2e1b9d4f6a0e5c8b2d7f1a3e9c4b6d0f2a8e5c1b7d3f9a4e6c0b2d8f1a
+    expiration: 86400000
+server:
+  port: 8080
+jwt:
+  secret: 7a8f3c2e1b9d4f6a0e5c8b2d7f1a3e9c4b6d0f2a8e5c1b7d3f9a4e6c0b2d8f1a
+  expiration: 86400000
