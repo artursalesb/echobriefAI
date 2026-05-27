@@ -52,7 +52,7 @@ Usuário recebe texto + áudio de confirmação
 - Groq Whisper (transcrição de áudio)
 - ElevenLabs (text-to-speech)
 
-**Deploy**
+**Deploy(Em breve)**
 - Azure App Service (backend)
 - Vercel (frontend)
 - Neon DB / Azure PostgreSQL (banco)
