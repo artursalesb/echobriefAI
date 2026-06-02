@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: echobrief-api
+    runtime: docker
+    plan: free
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: ELEVENLABS_API_KEY
+        sync: false
+      - key: SPRING_DATASOURCE_URL
+        sync: false
+      - key: SPRING_DATASOURCE_USERNAME
+        sync: false
+      - key: SPRING_DATASOURCE_PASSWORD
+        sync: false
