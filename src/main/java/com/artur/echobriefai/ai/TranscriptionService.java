@@ -1,5 +1,6 @@
 package com.artur.echobriefai.ai;
 
+import com.artur.echobriefai.service.AudioHistoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ByteArrayResource;
@@ -21,10 +22,13 @@ public class TranscriptionService {
     private String apiKey;
 
     private final AudioAiService audioAiService;
+    private final AudioHistoryService audioHistoryService;
 
-    public String transcribeAndProcess(MultipartFile audio) throws IOException {
+    public Map<String, String> transcribeAndProcess(MultipartFile audio) throws IOException {
         String transcription = transcribe(audio);
-        return audioAiService.processText(transcription);
+        String reply = audioAiService.processText(transcription);
+        audioHistoryService.save(transcription, reply);
+        return Map.of("transcription", transcription, "reply", reply);
     }
 
     private String transcribe(MultipartFile audio) throws IOException {
