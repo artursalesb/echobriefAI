@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/ai")
@@ -30,7 +31,10 @@ public class AiController {
 
     @PostMapping(value = "/audio", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<TranscriptionResponse> processAudio(@RequestParam("file") MultipartFile file) throws IOException {
-        String reply = transcriptionService.transcribeAndProcess(file);
-        return ResponseEntity.ok(new TranscriptionResponse(file.getOriginalFilename(), reply));
+        Map<String, String> result = transcriptionService.transcribeAndProcess(file);
+        return ResponseEntity.ok(new TranscriptionResponse(
+                result.get("transcription"),
+                result.get("reply")
+        ));
     }
 }
