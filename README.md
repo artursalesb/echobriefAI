@@ -12,7 +12,7 @@ Frontend:
 https://echobrief-ai.vercel.app
 
 Backend:
-[URL Render]
+https://echobriefai.onrender.com
 
 ---
 
